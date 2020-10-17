@@ -12,6 +12,11 @@ library(knitr)
 library(kableExtra)
 library(tidycensus)
 
+# functions
+root.dir = "https://raw.githubusercontent.com/urbanSpatial/Public-Policy-Analytics-Landing/master/DATA/"
+source("https://raw.githubusercontent.com/urbanSpatial/Public-Policy-Analytics-Landing/master/functions.r")
+
+
 policeDistricts <- 
   st_read("http://data-phl.opendata.arcgis.com/datasets/62ec63afb8824a15953399b1fa819df2_0.geojson") %>%
   st_transform('ESRI:102728') %>%
