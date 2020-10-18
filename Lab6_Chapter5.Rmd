@@ -155,7 +155,7 @@ ggplot() +
 ## only pulling a single variable for our model to keep it simple
 ## using Socrata again
 abandonCars <- 
-  read.socrata("https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Abandoned-Vehicles/3c9v-pnva") %>%
+  st_read('http://data-phl.opendata.arcgis.com/datasets/853a1421e738471b8cc0d6ff755d47ff_0.geojson') %>% 
     mutate(year = substr(creation_date,1,4)) %>%  # Extract or replace substrings in a character vector. Here we extract `year`
   filter(year == "2017") %>%
     dplyr::select(Y = latitude, X = longitude) %>%
