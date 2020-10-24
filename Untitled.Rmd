@@ -1,0 +1,76 @@
+---
+title: "Untitled"
+author: "Emma Sun"
+date: "10/22/2020"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    fig_width: 9
+    fig_height: 6
+    theme: united
+    highlight: tango
+---
+## I. Introduction
+
+A man was shot and killed in the Carroll Park section of West Philadelphia around noon on Tuesday, Oct. 7, 2020. The incident was the second fatal daytime shooting in Philadelphia within 24 hours: Around 1 p.m. Monday,  a 21-year-old man was [killed in the parking lot](https://6abc.com/man-shot-at-lowes-shooting-deadly-employee/6792729/) outside the Lowe's store on Columbus Boulevard in South Philly. The victim was an employee at the store.
+
+Six people were shot and killed on Monday in the city, pushing the total number of homicides in 2020 in Philadelphia higher than the total for 2019. There have been 364 reported homicides and 1,615 people shot so far in 2020. According to the Inquirer, the numbers show [gun violence](https://www.inquirer.com/crime/philadelphia-gun-violence-2020-danielle-outlaw-20201006.html) is occurring at the highest Philly has seen in a decade. 
+
+For years, gun violence in Philadelphia is an epidemic that the Police Department is battling. Building predictive policing model is one of tries the Department have made to tackle the dire problem. 
+
+Experiment of leveraging a predictive pricing model for capturing crime has been conducted in Philadelphia. Starting from 2017, Temple University’s Center for Security and Crime Science, housed in the Department of Criminal Justice at Temple, and the Philadelphia Police Department have developed a two-year collaboration for conducting the [Philadelphia Predictive Policing Experiment](https://liberalarts.temple.edu/sites/liberalarts/files/Predictive%20Policing%20Experiment.pdf) that was funded by the National Institute of Justice. This research project was the first place-based, randomized experiment to study the impact of different patrol strategies on violent and property crime in predicted criminal activity areas. The experiment hopes to learn whether different but operationally-realistic police responses to crime forecasts estimated by a predictive policing software program can reduce crime. So far, they have drawn basic conclusions that the marked car treatment showed substantial benefits for property crime (31% reduction in expected crime count), as well as temporal diffusion of benefits to the subsequent 8-h period (40% reduction in expected crime count). No other intervention demonstrated meaningful crime reduction. These reductions were probably not substantial enough to impact city or district-wide property crime. Some violent crime results ran contrary to expectations, but this happened in a context of extremely low crime counts in predicted areas. The small grid size areas hampered achieving statistical power. 
+
+Inspired by previous efforts and present Black Lives Matters demonstrations, this analysis makes effort to develop a predictive policing model for the shootings in Philadelphia with the goal of achieving accurate prediction and robust generalizability, as well as reducing systematic racism when it comes to gun violence. 
+
+
+
+**1. Base Map Datasets**
+
+* [**Philadelphia Boundary**](https://www.opendataphilly.org/dataset/city-limits): A base and outline of the City of Philadelphia. 
+
+* [**Philadelphia Neighborhoods**](https://www.opendataphilly.org/dataset/philadelphia-neighborhoods): A base and outline of the neighborhoods of Philadelphia. 
+
+* [**Police Districts**](https://www.opendataphilly.org/dataset/police-districts): Geojson file contains police district ploygon information. 
+
+**2. Crime Data**: This analysis focuses on shooting victim cases that also suffers from selection bias, such as racial bias when it comes to crime prediction. 
+
+* [**Shootings**](https://www.opendataphilly.org/dataset/shooting-victims): City-wide shooting cases occurred in from 2015 to 2020, including Police Officer-involved shootings. The model will be built based on shooting cases occurred in 2018, and be tested by shooting cases occurred in 2019.
+
+**3. Risk Factors Data**: This analysis selects five point level features that may intrigue shooting cases to build the model. See each dataset below:
+
+* [**Building Demolitions**](https://opendataphilly.org/dataset/building-demolitions): A point feature class of demolitions occurred in 2018, performed by private owners/contractors and by the Department of Licenses and Inspections due to dangerous building conditions.
+
+* [**Vacant Land**](https://data-phl.opendata.arcgis.com/datasets/vacant-indicators-points): A point feature class of the location of properties across Philadelphia that are likely to be a vacant land based on an assessment of City of Philadelphia administrative datasets.
+
+* [**Tobacco Retailer**](https://data-phl.opendata.arcgis.com/datasets/affordable-housing/data): A point feature class of the location of tobacco retailers that applied for a tobacco permit through an online application system in 2018.
+
+* [**Tobacco Youth Sales Violations**](https://www.opendataphilly.org/dataset/tobacco-youth-sales-violations): This dataset contains violations for tobacco sale to minors in 2018. 
+
+* [**Affordable Housing**](https://data-phl.opendata.arcgis.com/datasets/affordable-housing/data): A point feature class of the affordable housing units built in or before 2018.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
